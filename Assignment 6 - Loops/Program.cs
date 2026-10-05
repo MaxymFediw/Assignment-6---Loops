@@ -34,62 +34,76 @@ namespace Assignment_6___Loops
                 if (Double.TryParse(Console.ReadLine(), out choice))
                 {
                     Console.Clear();
-                    
-                    switch (choice)
-                    {
-                        case 1:
-                            while (!reset1)
-                            {
-                                
 
-                                Console.WriteLine("Give me a number!");
-                                if (Int32.TryParse(Console.ReadLine(), out minValue))
+                    if (choice == 1)
+                    {
+                        while (!reset1)
+                        {
+
+
+                            Console.WriteLine("Give me a number!");
+                            if (Int32.TryParse(Console.ReadLine(), out minValue))
+                            {
+                                Console.WriteLine($"Ok-Your first number is: {minValue}");
+                            }
+
+                            else
+                            {
+                                Console.WriteLine("Invalid Input.");
+                                //reset1 = true;
+                            }
+
+
+                            Console.WriteLine($"Give me a number bigger than {minValue}");
+                            Int32.TryParse(Console.ReadLine(), out maxValue);
+
+                            if (maxValue > minValue)
+                            {
+                                Console.WriteLine($"Okay, Give me a number between {minValue}, and {maxValue}!");
+                                Int32.TryParse(Console.ReadLine(), out middleValue);
+
+                                if (middleValue > minValue && middleValue < maxValue)
                                 {
-                                    Console.WriteLine($"Ok-Your first number is: {minValue}");
+                                    Console.WriteLine($"Good Stuff! {middleValue} is right between {minValue} and {maxValue}!");
+                                    reset1 = true;
                                 }
 
                                 else
                                 {
-                                    Console.WriteLine("Invalid Input.");
-                                    reset1 = true;
+                                    Console.WriteLine("Please enter a NUMBER BETWEEN you max value and minimum value.");
+                                    resetMenu = true;
                                 }
-
-                                
-                                    Console.WriteLine($"Give me a number bigger than {minValue}");
-                                    Int32.TryParse(Console.ReadLine(), out maxValue);
-
-                                    if (maxValue > minValue)
-                                    {
-                                        Console.WriteLine($"Okay, Give me a number between {minValue}, and {maxValue}!");
-                                        Int32.TryParse(Console.ReadLine(), out middleValue);
-
-                                        if (middleValue > minValue && middleValue < maxValue)
-                                        {
-                                            Console.WriteLine($"Good Stuff! {middleValue} is right between {minValue} and {maxValue}!");
-                                        }
-
-                                        else
-                                        {
-                                            Console.WriteLine("Please enter a NUMBER BETWEEN you max value and minimum value.");
-                                            reset1 = true;
-                                        }
-                                    }
-
-                                    else 
-                                    {
-                                        Console.WriteLine("Max Value Must be a NUMBER LAREGER than you last number.");
-                                        reset1 = true;
-                                    }
-                                
-                                
                             }
-                            break;
-                        
-                        case 2:
 
-                            break;
+                            else
+                            {
+                                Console.WriteLine("Max Value Must be a NUMBER LAREGER than you last number.");
+                                resetMenu = true;
+                            }
+
+
+                        }
                     }
-                    
+
+                    else if (choice == 2) 
+                    {
+                        Console.WriteLine("Welcome to the Bank of Blorb™ (BoB™)! What will you be doing today?");
+                        Console.WriteLine("1 - Deposit");
+                        Console.WriteLine("2 - Withdrawal");
+                        Console.WriteLine("3 - Bill Payment");
+                        Console.WriteLine("4 - Account Balance");
+                        Console.WriteLine("5 - Close");
+                        
+
+
+                    }
+
+                }
+
+                else 
+                {
+                    Console.WriteLine("Invalid Input");
+                    resetMenu = true;
                 }
                 
 
