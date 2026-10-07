@@ -11,8 +11,9 @@ namespace Assignment_6___Loops
         static void Main(string[] args)
         {
 
+            string bankChoice;
             int minValue, maxValue, middleValue;
-            double choice;
+            double choice, deposit, balance;
             bool resetMenu, reset1, reset2, reset3;
 
             resetMenu = false;
@@ -26,6 +27,8 @@ namespace Assignment_6___Loops
 
             while (!resetMenu) 
             {
+
+
                 Console.WriteLine("What would You Like To Do?");
                 Console.WriteLine("1 - Prompter");
                 Console.WriteLine("2 - Simple Banking Machine");
@@ -65,20 +68,20 @@ namespace Assignment_6___Loops
                                 if (middleValue > minValue && middleValue < maxValue)
                                 {
                                     Console.WriteLine($"Good Stuff! {middleValue} is right between {minValue} and {maxValue}!");
-                                    reset1 = true;
+                                    resetMenu = true;
                                 }
 
                                 else
                                 {
                                     Console.WriteLine("Please enter a NUMBER BETWEEN you max value and minimum value.");
-                                    resetMenu = true;
+                                    reset1 = true;
                                 }
                             }
 
                             else
                             {
-                                Console.WriteLine("Max Value Must be a NUMBER LAREGER than you last number.");
-                                resetMenu = true;
+                                Console.WriteLine("Max Value Must be a NUMBER LARGER than you last number.");
+                                reset1 = true;
                             }
 
 
@@ -87,14 +90,29 @@ namespace Assignment_6___Loops
 
                     else if (choice == 2) 
                     {
-                        Console.WriteLine("Welcome to the Bank of Blorb™ (BoB™)! What will you be doing today?");
-                        Console.WriteLine("1 - Deposit");
-                        Console.WriteLine("2 - Withdrawal");
-                        Console.WriteLine("3 - Bill Payment");
-                        Console.WriteLine("4 - Account Balance");
-                        Console.WriteLine("5 - Close");
-                        
+                        balance = 150;
 
+                        Console.WriteLine("Welcome to the Bank of Blorb™ (BoB™)! What will you be doing today?");
+                        Console.WriteLine("Deposit");
+                        Console.WriteLine("Withdrawal");
+                        Console.WriteLine("Bill Payment");
+                        Console.WriteLine("Account Balance");
+                        Console.WriteLine("Close");
+
+                        bankChoice = Console.ReadLine();
+
+                        bankChoice.ToLower();
+
+                        if (bankChoice == "deposit") 
+                        {
+                            Console.WriteLine("How much will you be depositing?");
+                            Double.TryParse(Console.ReadLine(), out deposit);
+
+                            Console.WriteLine($"You have ${(balance + deposit) - 0.75}");
+
+
+
+                        }
 
                     }
 
