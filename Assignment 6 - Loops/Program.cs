@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.Design;
 using System.Linq;
+using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -13,7 +15,7 @@ namespace Assignment_6___Loops
 
             string bankChoice;
             int minValue, maxValue, middleValue;
-            double choice, deposit, balance;
+            double choice, deposit, balance, withdrawal, bill;
             bool resetMenu, reset1, reset2, reset3;
 
             resetMenu = false;
@@ -69,6 +71,8 @@ namespace Assignment_6___Loops
                                 {
                                     Console.WriteLine($"Good Stuff! {middleValue} is right between {minValue} and {maxValue}!");
                                     resetMenu = true;
+
+                                    return; //fix so that it goes back to the main menu.
                                 }
 
                                 else
@@ -88,31 +92,103 @@ namespace Assignment_6___Loops
                         }
                     }
 
-                    else if (choice == 2) 
+                    else if (choice == 2)
                     {
                         balance = 150;
 
-                        Console.WriteLine("Welcome to the Bank of Blorb™ (BoB™)! What will you be doing today?");
-                        Console.WriteLine("Deposit");
-                        Console.WriteLine("Withdrawal");
-                        Console.WriteLine("Bill Payment");
-                        Console.WriteLine("Account Balance");
-                        Console.WriteLine("Close");
+                        Console.WriteLine("Welcome to the Bank of Blorb™ (BoB™)! What will you be doing today? (Please type out your choice)");
+                        Console.WriteLine("deposit");
+                        Console.WriteLine("withdrawal");
+                        Console.WriteLine("bill payment");
+                        Console.WriteLine("account balance");
+                        Console.WriteLine("close");
 
-                        bankChoice = Console.ReadLine();
+                        //bankChoice = Console.ReadLine();
 
-                        bankChoice.ToLower();
+                        bankChoice = Console.ReadLine().ToLower().Trim();
 
-                        if (bankChoice == "deposit") 
+                        //bankChoice.ToLower();
+
+                        if (bankChoice == "deposit")
                         {
+                            balance = balance - 0.75;
+                            Console.WriteLine($"You Currently Have: ${balance}");
+
                             Console.WriteLine("How much will you be depositing?");
                             Double.TryParse(Console.ReadLine(), out deposit);
 
-                            Console.WriteLine($"You have ${(balance + deposit) - 0.75}");
+                            balance = balance + deposit;
 
 
+                            Console.WriteLine($"You have ${balance}");
+                        }
+
+                        else if (bankChoice == "withdrawal")
+                        {
+                            balance = balance - 0.75;
+
+                            Console.WriteLine($"You Currently have ${balance}");
+
+                            Console.WriteLine("How much would you like to withdrawal?");
+                            Double.TryParse(Console.ReadLine(), out withdrawal);
+
+                            if (withdrawal > balance)
+                            {
+                                Console.WriteLine("You are too broke to take that much out.");
+                            }
+
+                            else
+                            {
+                                balance = balance - withdrawal;
+
+                                Console.WriteLine($"You Now Have ${balance}");
+                            }
 
                         }
+
+                        else if (bankChoice == "bill payment")
+                        {
+                            balance = balance - 0.75;
+
+                            Console.WriteLine($"You Currently have ${balance}");
+
+                            Console.WriteLine("How much would you like to pay?");
+                            Double.TryParse(Console.ReadLine(), out bill);
+
+                            if (bill > balance)
+                            {
+                                Console.WriteLine("You are too broke. Get a job");
+                            }
+
+                            else
+                            {
+                                balance = balance - bill;
+
+                                Console.WriteLine($"You Now Have ${balance}");
+                            }
+
+                        }
+
+                        else if (bankChoice == "account balance")
+                        {
+                            balance = balance - 0.75;
+
+                            Console.WriteLine($"You currently Have ${balance}");
+                        }
+
+                        else if (bankChoice == "close")
+                        {
+                            return;
+                        }
+
+                    }
+
+                    else if (choice == 3) 
+                    {
+                        
+
+
+
 
                     }
 
@@ -128,7 +204,7 @@ namespace Assignment_6___Loops
                 
             }
 
-            //Part 1
+           
 
             
 
