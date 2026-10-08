@@ -4,6 +4,7 @@ using System.ComponentModel.Design;
 using System.Linq;
 using System.Security.Principal;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Assignment_6___Loops
@@ -13,15 +14,18 @@ namespace Assignment_6___Loops
         static void Main(string[] args)
         {
 
+            
+
             string bankChoice;
             int minValue, maxValue, middleValue;
             double choice, deposit, balance, withdrawal, bill;
-            bool resetMenu, reset1, reset2, reset3;
+            bool resetMenu, reset1, reset2, reset3, doubleRoll;
 
             resetMenu = false;
             reset1 = false;
             reset2 = false;
             reset3 = false;
+            doubleRoll = false;
             
 
             choice = 0;
@@ -39,6 +43,8 @@ namespace Assignment_6___Loops
                 if (Double.TryParse(Console.ReadLine(), out choice))
                 {
                     Console.Clear();
+
+                    //Choice 1:
 
                     if (choice == 1)
                     {
@@ -91,6 +97,8 @@ namespace Assignment_6___Loops
 
                         }
                     }
+
+                    //choice 2:
 
                     else if (choice == 2)
                     {
@@ -183,13 +191,56 @@ namespace Assignment_6___Loops
 
                     }
 
-                    else if (choice == 3) 
+                    //Choice 3:
+
+                    else if (choice == 3)
                     {
-                        
+                        Console.ForegroundColor = ConsoleColor.Yellow;
+
+                        Die1 die1 = new Die1();
+                        Thread.Sleep(1);     //Adds a 1-millisecond delay, causing both randoms to generate seperetly, resulting in different numbers (mostly, unless you DO ge a double).
+                        Die1 die2 = new Die1();
+
+                        die1.Color = ConsoleColor.Cyan;
+                        die2.Color = ConsoleColor.Green;
+
+                        while (!doubleRoll)
+                        {
+
+                            die1.DrawRoll();
+                            die1.RollDie();
+                            die2.DrawRoll();
+                            die2.RollDie();
+
+                            Thread.Sleep(300);
+                            Console.Clear();
+
+                            if (die1.Roll == die2.Roll)
+                            {
+
+                                die1.DrawRoll();
+                                die2.DrawRoll();
+
+                                Console.WriteLine("Both die are the same-You got a Double!");
+
+                                Console.WriteLine("Press ENTER To Close");
+                                Console.ReadKey();
+                                return;
+
+                            }
+                        }
 
 
 
 
+                    }
+
+                    //Choice 4:
+
+                    else if (choice == 4) 
+                    {
+                        Console.Clear();
+                        return;
                     }
 
                 }
@@ -197,6 +248,7 @@ namespace Assignment_6___Loops
                 else 
                 {
                     Console.WriteLine("Invalid Input");
+                    
                     resetMenu = true;
                 }
                 
