@@ -34,12 +34,12 @@ namespace Assignment_6___Loops
             while (!resetMenu) 
             {
 
-
+                Console.WriteLine();
                 Console.WriteLine("What would You Like To Do?");
                 Console.WriteLine("1 - Prompter");
                 Console.WriteLine("2 - Simple Banking Machine");
                 Console.WriteLine("3 - Doubles Roller");
-                Console.WriteLine("Press 4 To Exit");
+                Console.WriteLine("Press 4 or ENTER To Exit");
                 if (Double.TryParse(Console.ReadLine(), out choice))
                 {
                     Console.Clear();
@@ -48,8 +48,8 @@ namespace Assignment_6___Loops
 
                     if (choice == 1)
                     {
-                        while (!reset1)
-                        {
+                        //while (!reset1)
+                        //{
 
 
                             Console.WriteLine("Give me a number!");
@@ -61,7 +61,7 @@ namespace Assignment_6___Loops
                             else
                             {
                                 Console.WriteLine("Invalid Input.");
-                                //reset1 = true;
+                                resetMenu = false;
                             }
 
 
@@ -78,24 +78,24 @@ namespace Assignment_6___Loops
                                     Console.WriteLine($"Good Stuff! {middleValue} is right between {minValue} and {maxValue}!");
                                     resetMenu = true;
 
-                                    return; //fix so that it goes back to the main menu.
+                                    resetMenu = false;
                                 }
 
                                 else
                                 {
                                     Console.WriteLine("Please enter a NUMBER BETWEEN you max value and minimum value.");
-                                    reset1 = true;
+                                    //reset1 = true;
                                 }
                             }
 
                             else
                             {
                                 Console.WriteLine("Max Value Must be a NUMBER LARGER than you last number.");
-                                reset1 = true;
+                                //reset1 = true;
                             }
 
 
-                        }
+                        //}
                     }
 
                     //choice 2:
@@ -186,7 +186,9 @@ namespace Assignment_6___Loops
 
                         else if (bankChoice == "close")
                         {
-                            return;
+                            //return;
+
+                            resetMenu = false;
                         }
 
                     }
@@ -226,6 +228,7 @@ namespace Assignment_6___Loops
                                 Console.WriteLine("Press ENTER To Close");
                                 Console.ReadKey();
                                 return;
+
 
                             }
                         }
