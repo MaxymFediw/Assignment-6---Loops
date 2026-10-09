@@ -39,7 +39,7 @@ namespace Assignment_6___Loops
                 Console.WriteLine("1 - Prompter");
                 Console.WriteLine("2 - Simple Banking Machine");
                 Console.WriteLine("3 - Doubles Roller");
-                Console.WriteLine("Press 4 or ENTER To Exit");
+                Console.WriteLine("Press 4 To Exit");
                 if (Double.TryParse(Console.ReadLine(), out choice))
                 {
                     Console.Clear();
@@ -252,7 +252,7 @@ namespace Assignment_6___Loops
                 {
                     Console.WriteLine("Invalid Input");
                     
-                    resetMenu = true;
+                    resetMenu = false;
                 }
                 
 
